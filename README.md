@@ -5,7 +5,7 @@ This project is a successor to [SAFBuilder](https://github.com/DSpace-Labs/SAFBu
 
 
 #### Instructions
-1. Navigate to the GitHub page (...)*
+1. Navigate to the GitHub page: [SAFPython Constructor](https://github.com/zahmed3/SAFPython_Constructor)
 
 2. Click on the Releases Tab on the side of the page; I will provide a hyperlink in case you are not able to see it: HYPERLINK*
 
