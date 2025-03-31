@@ -1,7 +1,7 @@
 # SAFPython_Constructor
 ***
 #### Overview
-This project is a successor to [SAFBuilder](https://github.com/DSpace-Labs/SAFBuilder "SAFBuilder"), created by Zyad Ahmed for UMBC Software Engineering graduate program's capstone project.
+This project is a successor to [SAFBuilder](https://github.com/DSpace-Labs/SAFBuilder "SAFBuilder"), created by Zyad Ahmed for UMBC's Software Engineering graduate program capstone project.
 
 
 #### Instructions
