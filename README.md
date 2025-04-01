@@ -1,7 +1,9 @@
 # SAFPython Constructor
 ***
 ### Overview
-This project is a successor to [SAFBuilder](https://github.com/DSpace-Labs/SAFBuilder "SAFBuilder"), created by Zyad Ahmed for UMBC's Software Engineering graduate program capstone project.
+SAFPython Constructor is a successor to [SAFBuilder](https://github.com/DSpace-Labs/SAFBuilder "SAFBuilder"), created by Zyad Ahmed for UMBC's Software Engineering graduate program capstone project. This project was sponsored by UMBC's dedicated library.
+
+I have also utilized some code from [PySAF](https://github.com/cstarcher/pysaf) which was altered and is properly credited in the related code block's comments.
 
 
 ### Instructions
@@ -13,6 +15,8 @@ This project is a successor to [SAFBuilder](https://github.com/DSpace-Labs/SAFBu
 
 4. After installing, simply double click on the downloaded SAFPython_Constructor.exe file to open the application. It will say that the file is unverified and give you a warning when trying to running it, but please ignore this warning as this file does not contain anything harmful.
 
+5. When attempting to start the operation, please make sure that the CSV file is in the same folder directory as the document files you want to archive.
+   
 
 ### UI Preview
 
