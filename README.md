@@ -15,7 +15,7 @@ I have also utilized some code from [PySAF](https://github.com/cstarcher/pysaf) 
 
 4. After installing, simply double click on the downloaded SAFPython_Constructor.exe file to open the application. It will say that the file is unverified and give you a warning when trying to run it, but please ignore this warning as this file does not contain anything harmful.
 
-5. When attempting to start the operation, please make sure that the CSV file is in the same folder directory as the document files you want to archive.
+5. When attempting to start the operation, please make sure that the CSV file is in the same folder directory as the document files you want to archive. Also make sure that the CSV file is UTC-8 encoded.
    
 
 ### UI Preview
