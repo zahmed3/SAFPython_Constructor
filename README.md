@@ -9,7 +9,7 @@ I have also utilized some code from [PySAF](https://github.com/cstarcher/pysaf) 
 ### Instructions
 1. Navigate to the GitHub page: [SAFPython Constructor](https://github.com/zahmed3/SAFPython_Constructor)
 
-2. Click on the Releases Tab on the side of the page; I will provide a hyperlink in case you are not able to see it: HYPERLINK*
+2. Click on the Releases Tab on the side of the page; I will provide a hyperlink in case you are not able to see it: [Releases](https://github.com/zahmed3/SAFPython_Constructor/releases/tag/v1)
 
 3. Look under Assets and click on SAFPython_Constructor.exe to download the application
 
