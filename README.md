@@ -11,7 +11,7 @@ I have also utilized some code from [PySAF](https://github.com/cstarcher/pysaf) 
 
 2. Click on the Releases Tab on the side of the page; I will provide a hyperlink in case you are not able to see it: [Releases](https://github.com/zahmed3/SAFPython_Constructor/releases/tag/v1)
 
-3. Look under Assets and click on SAFPython_Constructor.exe to download the application
+3. Look under Assets and click on SAFPython_Constructor.exe to download the application.
 
 4. After installing, simply double click on the downloaded SAFPython_Constructor.exe file to open the application. It will say that the file is unverified and give you a warning when trying to running it, but please ignore this warning as this file does not contain anything harmful.
 
