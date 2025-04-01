@@ -11,7 +11,7 @@ This project is a successor to [SAFBuilder](https://github.com/DSpace-Labs/SAFBu
 
 3. Look under Assets and click on SAFPython_Constructor.exe to download the application
 
-4. After installing, simply double click on the downloaded SAFPython_Constructor.exe file to open the application
+4. After installing, simply double click on the downloaded SAFPython_Constructor.exe file to open the application. It will say that the file is unverified and give you a warning when running, but please ignore this warning as this file does not contain anything harmful.
 
 
 ### UI Preview
