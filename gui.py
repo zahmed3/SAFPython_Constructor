@@ -1,6 +1,9 @@
 import interface_functions as intfun
+import options as opt
+import google_drive_upload as gdu
 from pathlib import *
 from tkinter import *
+from tkinter import ttk
 import os
 import sys
 
@@ -191,45 +194,76 @@ def create_gui():
         font=("Inter SemiBold", 20 * -1)
     )
 
-    #Creates the first checkbox.
-    image_image_4 = PhotoImage(file=image_path("image_4.png"))
-    image_4 = canvas.create_image(
-        894.0,
-        286.0,
-        image=image_image_4
-    )
+    #Creates the first checkbox and the default image for being checked.
+    checked_box_image = PhotoImage(file=image_path("image_9.png"))
+    unchecked_box_1 = PhotoImage(file=image_path("image_4.png"))
+    dark_var = StringVar()
+    check_1 = Checkbutton(window,
+                          image=unchecked_box_1,
+                          selectimage=checked_box_image,
+                          bd=1,
+                          indicatoron=False,
+                          variable=dark_var,
+                          onvalue="On", offvalue="Off")
+    check_1.place(x=880.0,
+                  y=270.0)
+    check_1.deselect()
 
     #Creates the second checkbox.
-    image_image_5 = PhotoImage(file=image_path("image_5.png"))
-    image_5 = canvas.create_image(
-        894.0,
-        568.0,
-        image=image_image_5
-    )
+    unchecked_box_2 = PhotoImage(file=image_path("image_5.png"))
+    zip_var = StringVar()
+    check_2 = Checkbutton(window,
+                          image=unchecked_box_2,
+                          selectimage=checked_box_image,
+                          bd=1,
+                          indicatoron=False,
+                          variable=zip_var,
+                          onvalue="On", offvalue="Off")
+    check_2.place(x=880.0,
+                  y=364.0)
+    check_2.deselect()
 
     #Creates the third checkbox.
-    image_image_6 = PhotoImage(file=image_path("image_6.png"))
-    image_6 = canvas.create_image(
-        894.0,
-        474.0,
-        image=image_image_6
-    )
+    unchecked_box_3 = PhotoImage(file=image_path("image_6.png"))
+    open_folder_var = StringVar()
+    check_3 = Checkbutton(window,
+                          image=unchecked_box_3,
+                          selectimage=checked_box_image,
+                          bd=1,
+                          indicatoron=False,
+                          variable=open_folder_var,
+                          onvalue="On", offvalue="Off")
+    check_3.place(x=880.0,
+                  y=458.0)
+    check_3.deselect()
 
     #Creates the fourth checkbox.
-    image_image_7 = PhotoImage(file=image_path("image_7.png"))
-    image_7 = canvas.create_image(
-        894.0,
-        380.0,
-        image=image_image_7
-    )
+    unchecked_box_4 = PhotoImage(file=image_path("image_7.png"))
+    close_app_var = StringVar()
+    check_4 = Checkbutton(window,
+                          image=unchecked_box_4,
+                          selectimage=checked_box_image,
+                          bd=1,
+                          indicatoron=False,
+                          variable=close_app_var,
+                          onvalue="On", offvalue="Off")
+    check_4.place(x=880.0,
+                  y=552.0)
+    check_4.deselect()
 
     #Creates the fifth checkbox.
-    image_image_8 = PhotoImage(file=image_path("image_8.png"))
-    image_8 = canvas.create_image(
-        894.0,
-        662.0,
-        image=image_image_8
-    )
+    unchecked_box_5 = PhotoImage(file=image_path("image_8.png"))
+    drive_upload_var = StringVar()
+    check_4 = Checkbutton(window,
+                          image=unchecked_box_5,
+                          selectimage=checked_box_image,
+                          bd=1,
+                          indicatoron=False,
+                          variable=drive_upload_var,
+                          onvalue="On", offvalue="Off")
+    check_4.place(x=880.0,
+                  y=646.0)
+    check_4.deselect()
 
     #Creates the text for the first option.
     canvas.create_text(
@@ -367,14 +401,6 @@ def create_gui():
         )
     button_5.bind('<Enter>', button_5_hover)
     button_5.bind('<Leave>', button_5_leave)
-
-    #Creates the placeholder image for the WIP tabs.
-    image_image_9 = PhotoImage(file=image_path("image_9.png"))
-    image_9 = canvas.create_image(
-        159.0,
-        145.0,
-        image=image_image_9
-    )
 
     #Does not allow the user to resize the window and sets the window loop.
     window.resizable(False, False)
