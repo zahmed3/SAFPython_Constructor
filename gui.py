@@ -7,14 +7,23 @@ from tkinter import ttk
 import os
 import sys
 
-#Image file names are temporary and will be updated in future checkpoints.
-
 #This function will create the GUI that is used by the software.
 def create_gui():
-    #Declares the global variables and sets the starting value for selected_file and selected_folder.
+    #Declares the global variables and sets the starting value for them.
     global window
+    global canvas
     global selected_file
     global selected_folder
+    global alert_var
+    global zip_var
+    global open_folder_var
+    global close_app_var
+    global drive_upload_var
+    alert_var = ""
+    zip_var = ""
+    open_folder_var = ""
+    close_app_var = ""
+    drive_upload_var = ""
     selected_file = ""
     selected_folder = ""
 
@@ -45,7 +54,7 @@ def create_gui():
     #Determines the size and background color of the interface.
     canvas = Canvas(
         window,
-        bg = "#F0F0F0",
+        bg="#F0F0F0",
         height = 720,
         width = 1280,
         bd = 0,
@@ -197,13 +206,12 @@ def create_gui():
     #Creates the first checkbox and the default image for being checked.
     checked_box_image = PhotoImage(file=image_path("image_9.png"))
     unchecked_box_1 = PhotoImage(file=image_path("image_4.png"))
-    dark_var = StringVar()
     check_1 = Checkbutton(window,
                           image=unchecked_box_1,
                           selectimage=checked_box_image,
                           bd=1,
                           indicatoron=False,
-                          variable=dark_var,
+                          variable=alert_var,
                           onvalue="On", offvalue="Off")
     check_1.place(x=880.0,
                   y=270.0)
@@ -270,7 +278,7 @@ def create_gui():
         920.0,
         277.0,
         anchor="nw",
-        text="Enable Dark Mode",
+        text="Alert if There are Unnecessary Files in Input Folder",
         fill="#000000",
         font=("Inter", 15 * -1)
     )
@@ -280,7 +288,7 @@ def create_gui():
         920.0,
         371.0,
         anchor="nw",
-        text="Create ZIP file",
+        text="Create ZIP File",
         fill="#000000",
         font=("Inter", 15 * -1)
     )
@@ -350,7 +358,7 @@ def create_gui():
         image=button_image_4,
         borderwidth=0,
         highlightthickness=0,
-        command=intfun.close_application,
+        command=opt.close_application,
         relief="flat"
     )
     button_4.place(
