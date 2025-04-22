@@ -3,6 +3,7 @@ from tkinter import filedialog
 import gui as gui
 import saf as saf
 import options as opt
+import os
 
 #This function allows the user to select the CSV file they wish to convert.
 def select_csv_file():
@@ -114,24 +115,105 @@ def start_operation():
         file_and_folder_error_popup.grab_set()
         gui.window.wait_window(file_and_folder_error_popup)
     else:
-        saf.open_csv()
-        popup_width = 1000
-        popup_height = 150
-        x = (screen_width / 2) - (popup_width / 2)
-        y = (screen_height / 2) - (popup_height / 2)
-        saf_completion_popup = Toplevel(gui.window)
-        saf_completion_popup.geometry(f'{popup_width}x{popup_height}+{int(x)}+{int(y)}')
-        saf_completion_popup.title("SAF Operation Completed")
-        label = Label(saf_completion_popup, text="SAF files have been created in '" + gui.selected_folder + "' .",
+        if gui.alert_var.get() == "On":
+            popup_width = 500
+            popup_height = 150
+            x = (screen_width / 2) - (popup_width / 2)
+            y = (screen_height / 2) - (popup_height / 2)
+            opt.alert_unnecessary_files()
+            if gui.unnecessary_file_count != 0:
+                alert_popup = Toplevel(gui.window)
+                alert_popup.geometry(f'{popup_width}x{popup_height}+{int(x)}+{int(y)}')
+                alert_popup.title("Alert: Unnecessary Files Found")
+                label = Label(alert_popup,
+                              text="There were " + str(gui.unnecessary_file_count) + " unnecessary file(s) found. Continue?",
+                              font=("Inter", 10))
+                label.pack(padx=20, pady=20)
+                continue_button = Button(alert_popup, text="Continue", font=("Inter", 10),
+                                  command=lambda:[alert_popup.destroy(), continue_start_operation()])
+                continue_button.config(width="15", height="15")
+                continue_button.pack(pady=20, padx=50, side=LEFT)
+                end_button = Button(alert_popup, text="End Operation", font=("Inter", 10),
+                                  command=alert_popup.destroy)
+                end_button.config(width="15", height="15")
+                end_button.pack(pady=20, padx=50, side=RIGHT)
+                alert_popup.grab_set()
+                gui.window.wait_window(alert_popup)
+                return
+            else:
+                continue_start_operation()
+        else:
+            continue_start_operation()
+
+#Will continue the start operation when the conditions in the start_operation function are met.
+#Also manages conditions for when some options are selected on the interface.
+def continue_start_operation():
+    screen_width = gui.window.winfo_screenwidth()
+    screen_height = gui.window.winfo_screenheight()
+    popup_width = 1000
+    popup_height = 150
+    x = (screen_width / 2) - (popup_width / 2)
+    y = (screen_height / 2) - (popup_height / 2)
+    if len(os.listdir(gui.selected_folder)) != 0:
+        folder_not_empty_popup = Toplevel(gui.window)
+        folder_not_empty_popup.geometry(f'{popup_width}x{popup_height}+{int(x)}+{int(y)}')
+        folder_not_empty_popup.title("Output Folder Selected Not Empty")
+        label = Label(folder_not_empty_popup,
+                      text="Please empty the folder at '" + gui.selected_folder + "' path to continue the operation.",
                       font=("Inter", 10))
         label.pack(padx=20, pady=20)
-        close_button = Button(saf_completion_popup, text="Close Pop-up", font=("Inter", 10),
-                              command=saf_completion_popup.destroy)
+        close_button = Button(folder_not_empty_popup, text="Close Pop-up", font=("Inter", 10),
+                              command=folder_not_empty_popup.destroy)
         close_button.config(width="30", height="15")
         close_button.pack(pady=20)
-        saf_completion_popup.grab_set()
-        gui.window.wait_window(saf_completion_popup)
-        if gui.open_folder_var.get() == "On":
-            opt.open_output_folder()
-        if gui.close_app_var.get() == "On":
-            opt.close_application()
+        folder_not_empty_popup.grab_set()
+        gui.window.wait_window(folder_not_empty_popup)
+        return
+    else:
+        pass
+    operation_loading_popup = Toplevel(gui.window)
+    loading_popup_width = 500
+    loading_popup_height = 150
+    loading_x = (screen_width / 2) - (loading_popup_width / 2)
+    loading_y = (screen_height / 2) - (loading_popup_height / 2)
+    operation_loading_popup.geometry(f'{loading_popup_width}x{loading_popup_height}+{int(loading_x)}+{int(loading_y)}')
+    operation_loading_popup.title("SAF Operation in Progress")
+    loading_label = Label(operation_loading_popup, text="Loading...", font=("Inter", 10))
+    loading_label.pack(padx=20, pady=20, anchor="center")
+    saf.open_csv()
+    saf_completion_popup = Toplevel(gui.window)
+    saf_completion_popup.geometry(f'{popup_width}x{popup_height}+{int(x)}+{int(y)}')
+    saf_completion_popup.title("SAF Operation Completed")
+    label = Label(saf_completion_popup, text="SAF files have been created in '" + gui.selected_folder + "' .",
+                  font=("Inter", 10))
+    label.pack(padx=20, pady=20)
+    close_button = Button(saf_completion_popup, text="Close Pop-up", font=("Inter", 10),
+                          command=lambda:[operation_loading_popup.destroy(), saf_completion_popup.destroy()])
+    close_button.config(width="30", height="15")
+    close_button.pack(pady=20)
+    saf_completion_popup.grab_set()
+    saf_completion_popup.focus_set()
+    gui.window.wait_window(saf_completion_popup)
+    if gui.zip_var.get() == "On":
+        zip_popup = Toplevel(gui.window)
+        zip_popup_width = 1000
+        zip_popup_height = 150
+        zip_x = (screen_width / 2) - (zip_popup_width / 2)
+        zip_y = (screen_height / 2) - (zip_popup_height / 2)
+        zip_popup.geometry(f'{zip_popup_width}x{zip_popup_height}+{int(zip_x)}+{int(zip_y)}')
+        zip_popup.title("ZIP Archive Creation in Progress")
+        zip_label = Label(zip_popup,
+                          text="The application will be unresponsive for a few seconds, please give it some time to complete your request.",
+                          font=("Inter", 10))
+        zip_label.pack(padx=20, pady=20)
+        close_button = Button(zip_popup, text="Close Pop-up", font=("Inter", 10),
+                              command=zip_popup.destroy)
+        close_button.config(width="30", height="15")
+        close_button.pack(pady=20)
+        zip_popup.grab_set()
+        gui.window.wait_window(zip_popup)
+        opt.create_zip()
+    if gui.open_folder_var.get() == "On":
+        opt.open_output_folder()
+    if gui.close_app_var.get() == "On":
+        opt.close_application()
