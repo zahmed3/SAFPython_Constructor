@@ -19,11 +19,15 @@ def create_gui():
     global open_folder_var
     global close_app_var
     global drive_upload_var
+    global google_signin
+    global unnecessary_file_count
     alert_var = ""
     zip_var = ""
     open_folder_var = ""
     close_app_var = ""
     drive_upload_var = ""
+    google_signin = ""
+    unnecessary_file_count = ""
     selected_file = ""
     selected_folder = ""
 
@@ -206,6 +210,7 @@ def create_gui():
     #Creates the first checkbox and the default image for being checked.
     checked_box_image = PhotoImage(file=image_path("image_9.png"))
     unchecked_box_1 = PhotoImage(file=image_path("image_4.png"))
+    alert_var = StringVar()
     check_1 = Checkbutton(window,
                           image=unchecked_box_1,
                           selectimage=checked_box_image,
@@ -387,7 +392,7 @@ def create_gui():
         image=button_image_5,
         borderwidth=0,
         highlightthickness=0,
-        command=intfun.google_signin_error_popup,
+        command=gdu.google_signin_error_popup,
         relief="flat"
     )
     button_5.place(
