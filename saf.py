@@ -9,19 +9,19 @@ import gui as gui
 #Sets the starting value for saf_folder_list.
 saf_folder_list = []
 
-#This function was adapted from PySAF and altered; it will be modified more in future checkpoints.
+#This function was adapted from PySAF and altered.
 #Link to PySAF's repository: https://github.com/cstarcher/pysaf
 #This function creates a new directory for each of the DSpace records.
 def new_dir(saf_dir, row_num):
     os.makedirs(os.path.join(saf_dir, ('item_{}'.format(row_num))))
 
-#This function was adapted from PySAF and altered; it will be modified more in future checkpoints.
+#This function was adapted from PySAF and altered.
 #Link to PySAF's repository: https://github.com/cstarcher/pysaf
 #This function shifts the current directory being worked to the newly created directory.
 def change_dir(saf_dir, row_num):
     os.chdir(os.path.join(saf_dir, ('item_{}'.format(row_num))))
 
-#This function was adapted from PySAF and altered; it will be modified more in future checkpoints.
+#This function was adapted from PySAF and altered.
 #Link to PySAF's repository: https://github.com/cstarcher/pysaf
 #This function writes the file names to the 'contents' file and also copies the files to the current directory.
 def write_contents_file(data):
@@ -33,7 +33,7 @@ def write_contents_file(data):
                     if csv_file_name == fname:
                         shutil.copy2(os.path.join(dirpath, fname), '.')
 
-#This function was adapted from PySAF and altered; it will be modified more in future checkpoints.
+#This function was adapted from PySAF and altered.
 #Link to PySAF's repository: https://github.com/cstarcher/pysaf
 #This function writes metadata to the 'dublin_core' file.
 def write_dc_metadata(header_split, data_split):
@@ -54,7 +54,7 @@ def write_dc_metadata(header_split, data_split):
                 dc_file.write('  {}' '\n'.format(
                     str(ET.tostring(dc_value, encoding='utf-8'), 'utf-8')))
 
-#This function was adapted from PySAF and altered; it will be modified more in future checkpoints.
+#This function was adapted from PySAF and altered.
 #Link to PySAF's repository: https://github.com/cstarcher/pysaf
 #This function writes metadata to schema files that are not written into 'dublin_core' files.
 def write_schema_metadata(schema_file, header_split, data_split, schema):
@@ -75,7 +75,7 @@ def write_schema_metadata(schema_file, header_split, data_split, schema):
                 dc_file.write('  {}' '\n'.format(
                     str(ET.tostring(dc_value, encoding='utf-8'), 'utf-8')))
 
-#This function was adapted from PySAF and altered; it will be modified more in future checkpoints.
+#This function was adapted from PySAF and altered.
 #Link to PySAF's repository: https://github.com/cstarcher/pysaf
 #This function adds closing tags to the end of the xml files.
 def write_closing_tag():
@@ -84,7 +84,7 @@ def write_closing_tag():
             with open(file_name, 'a', encoding='utf-8') as dc_file:
                 dc_file.write('</dublin_core>' '\n')
 
-#This function was adapted from PySAF and altered; it will be modified more in future checkpoints.
+#This function was adapted from PySAF and altered.
 #Link to PySAF's repository: https://github.com/cstarcher/pysaf
 #This function writes CSV metadata to the appropriate schema files.
 def create_files(saf_dir, row_num, headers, row):
@@ -107,7 +107,7 @@ def create_files(saf_dir, row_num, headers, row):
                                            schema)
     write_closing_tag()
 
-#This function was adapted from PySAF and altered; it will be modified more in future checkpoints.
+#This function was adapted from PySAF and altered.
 #Link to PySAF's repository: https://github.com/cstarcher/pysaf
 #This function runs the SAF operation when called.
 def open_csv():
