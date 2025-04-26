@@ -18,16 +18,16 @@ def create_gui():
     global zip_var
     global open_folder_var
     global close_app_var
-    global drive_upload_var
-    global google_signin
     global unnecessary_file_count
+    global mismatched_files_var
+    global mismatched_filename_list
     alert_var = ""
     zip_var = ""
     open_folder_var = ""
     close_app_var = ""
-    drive_upload_var = ""
-    google_signin = ""
     unnecessary_file_count = ""
+    mismatched_files_var = ""
+    mismatched_filename_list = []
     selected_file = ""
     selected_folder = ""
 
@@ -74,7 +74,8 @@ def create_gui():
         1280.0,
         120.0,
         fill="#83D3FE",
-        outline="")
+        outline=""
+    )
 
     #Places the text in the top colored rectangle
     canvas.create_text(
@@ -195,7 +196,8 @@ def create_gui():
         804.0,
         720.0,
         fill="#000000",
-        outline="")
+        outline=""
+    )
 
     #Creates the text for 'Options.'
     canvas.create_text(
@@ -266,13 +268,13 @@ def create_gui():
 
     #Creates the fifth checkbox.
     unchecked_box_5 = PhotoImage(file=image_path("image_8.png"))
-    drive_upload_var = StringVar()
+    mismatched_files_var = StringVar()
     check_4 = Checkbutton(window,
                           image=unchecked_box_5,
                           selectimage=checked_box_image,
                           bd=1,
                           indicatoron=False,
-                          variable=drive_upload_var,
+                          variable=mismatched_files_var,
                           onvalue="On", offvalue="Off")
     check_4.place(x=880.0,
                   y=646.0)
@@ -283,7 +285,7 @@ def create_gui():
         920.0,
         277.0,
         anchor="nw",
-        text="Alert if There are Unnecessary Files in Input Folder",
+        text="Check if there are Unnecessary Files in Input Folder",
         fill="#000000",
         font=("Inter", 15 * -1)
     )
@@ -293,7 +295,7 @@ def create_gui():
         920.0,
         371.0,
         anchor="nw",
-        text="Create ZIP File",
+        text="Create ZIP File(s)",
         fill="#000000",
         font=("Inter", 15 * -1)
     )
@@ -323,7 +325,7 @@ def create_gui():
         920.0,
         653.0,
         anchor="nw",
-        text="Upload Directly to Your Google Drive",
+        text="Check for Mismatched Files in Input Folder",
         fill="#000000",
         font=("Inter", 15 * -1)
     )
@@ -392,7 +394,7 @@ def create_gui():
         image=button_image_5,
         borderwidth=0,
         highlightthickness=0,
-        command=gdu.google_signin_error_popup,
+        command=gdu.google_signin_error,
         relief="flat"
     )
     button_5.place(
