@@ -13,7 +13,7 @@ def google_signin_error():
     error_popup.geometry(f'{popup_width}x{popup_height}+{int(x)}+{int(y)}')
     error_popup.title("Google Drive Upload Feature Cancelled")
     label = Label(error_popup,
-                  text="This feature has unfortunately been cancelled. Please refer to the GitHub page for more information.",
+                  text="This feature has unfortunately been cancelled. Please refer to the GitHub page and documentation for more information.",
                   font=("Inter", 10))
     label.pack(padx=20, pady=20)
     close_button = Button(error_popup, text="Close Pop-up", font=("Inter", 10), command=error_popup.destroy)
