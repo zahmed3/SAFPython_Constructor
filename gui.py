@@ -3,7 +3,6 @@ import options as opt
 import google_drive_upload as gdu
 from pathlib import *
 from tkinter import *
-from tkinter import ttk
 import os
 import sys
 
