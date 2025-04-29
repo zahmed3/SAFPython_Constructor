@@ -24,7 +24,7 @@ This tool is a standalone application made for the UMBC librarians. The way this
 
 ### UI Preview
 
-![UI Preview](https://cdn.discordapp.com/attachments/430743889008263180/1366194364954579106/safpythonconstructorgui.png?ex=68100f27&is=680ebda7&hm=8385eb50d7d9fbe4505c4995d731dc130508b007dc3523d464fd61bf1d505ff7&format=webp&quality=lossless&width=1979&height=1160)
+![UI Preview](https://media.discordapp.net/attachments/430743889008263180/1366194364954579106/safpythonconstructorgui.png?ex=68120967&is=6810b7e7&hm=254c9a16c89f33e19b37830d2ac3005daa019a410eba5c475dd267804bd5f1ef&=&format=webp&quality=lossless&width=1979&height=1160)
 
 
 ### Current Implemented Features
