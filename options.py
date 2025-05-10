@@ -6,13 +6,15 @@ import shutil
 import pandas as pd
 
 #Will alert the user with a pop-up on operation run if they want to continue with operation or end operation early.
-def alert_unnecessary_files():
-    gui.unnecessary_file_count = 0
+def alert_unused_files():
+    gui.unused_file_count = 0
     input_folder_path = os.path.dirname(gui.selected_file)
     for file in os.listdir(input_folder_path):
         if not(file.endswith(".pdf") or file.endswith(".csv") or file.endswith(".docx") or file.endswith(".mp3")
                or file.endswith(".mp4") or file.endswith(".zip")):
-            gui.unnecessary_file_count += 1
+            gui.unused_filename_list.append(file)
+            gui.unused_file_count += 1
+    return gui.unused_filename_list
 
 #Creates ZIP archives of the operation's output within the SAF folder.
 def create_zip():
