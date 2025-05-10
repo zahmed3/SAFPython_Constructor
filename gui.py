@@ -17,14 +17,16 @@ def create_gui():
     global zip_var
     global open_folder_var
     global close_app_var
-    global unnecessary_file_count
+    global unused_file_count
+    global unused_filename_list
     global mismatched_files_var
     global mismatched_filename_list
     alert_var = ""
     zip_var = ""
     open_folder_var = ""
     close_app_var = ""
-    unnecessary_file_count = ""
+    unused_file_count = ""
+    unused_filename_list = []
     mismatched_files_var = ""
     mismatched_filename_list = []
     selected_file = ""
@@ -284,7 +286,7 @@ def create_gui():
         920.0,
         277.0,
         anchor="nw",
-        text="Check if there are Unnecessary Files in Input Folder",
+        text="Check if there are Unused Files in Input Folder",
         fill="#000000",
         font=("Inter", 15 * -1)
     )
