@@ -5,6 +5,7 @@ import saf as saf
 import options as opt
 import os
 import google_drive_upload as gdu
+import time
 
 #This function allows the user to select the CSV file they wish to convert.
 def select_csv_file():
@@ -133,50 +134,56 @@ def start_operation():
         gui.window.wait_window(file_and_folder_error_popup)
     else:
         if gui.alert_var.get() == "On":
-            popup_width = 500
-            popup_height = 150
+            popup_width = 1000
+            popup_height = 300
             x = (screen_width / 2) - (popup_width / 2)
             y = (screen_height / 2) - (popup_height / 2)
-            opt.alert_unnecessary_files()
-            if gui.unnecessary_file_count != 0:
+            unused_list = opt.alert_unused_files()
+            if gui.unused_file_count != 0:
                 alert_popup = Toplevel(gui.window)
                 alert_popup.geometry(f'{popup_width}x{popup_height}+{int(x)}+{int(y)}')
-                alert_popup.title("Alert: Unnecessary Files Found")
+                alert_popup.title("Alert: Unused Files Found")
                 label = Label(alert_popup,
-                              text="There were " + str(gui.unnecessary_file_count) + " unnecessary file(s) found. Continue?",
+                              text="There were " + str(gui.unused_file_count) + " unused file(s) found:",
                               font=("Inter", 10))
                 label.pack(padx=20, pady=20)
-                continue_button = Button(alert_popup,
-                                         text="Continue",
-                                         font=("Inter", 10),
-                                         command=lambda:[alert_popup.destroy(), continue_start_operation()])
-                continue_button.config(width="15", height="15")
-                continue_button.pack(pady=20, padx=50, side=LEFT)
+                unused_list_label = Label(alert_popup,
+                                          text=repr(unused_list),
+                                          font=("Inter", 10))
+                unused_list_label.bind('<Configure>',
+                                           lambda e: unused_list_label.config(
+                                               wraplength=unused_list_label.winfo_width()))
+                unused_list_label.pack()
                 end_button = Button(alert_popup,
                                     text="End Operation",
                                     font=("Inter", 10),
                                     command=alert_popup.destroy)
-                end_button.config(width="15", height="15")
-                end_button.pack(pady=20, padx=50, side=RIGHT)
+                end_button.config(width="15", height="5")
+                end_button.pack(pady=20, side="bottom")
                 alert_popup.grab_set()
                 gui.window.wait_window(alert_popup)
+                gui.unused_filename_list.clear()
                 return
             else:
-                no_unnecessary_popup = Toplevel(gui.window)
-                no_unnecessary_popup.geometry(f'{popup_width}x{popup_height}+{int(x)}+{int(y)}')
-                no_unnecessary_popup.title("No Unnecessary Files Found")
-                label = Label(no_unnecessary_popup,
-                              text="There were no unnecessary files found in the input folder.",
+                popup_width = 500
+                popup_height = 150
+                x = (screen_width / 2) - (popup_width / 2)
+                y = (screen_height / 2) - (popup_height / 2)
+                no_unused_popup = Toplevel(gui.window)
+                no_unused_popup.geometry(f'{popup_width}x{popup_height}+{int(x)}+{int(y)}')
+                no_unused_popup.title("No Unused Files Found")
+                label = Label(no_unused_popup,
+                              text="There were no unused files found in the input folder.",
                               font=("Inter", 10))
                 label.pack(padx=20, pady=20)
-                continue_button = Button(no_unnecessary_popup,
+                continue_button = Button(no_unused_popup,
                                          text="Continue",
                                          font=("Inter", 10),
-                                         command=no_unnecessary_popup.destroy)
+                                         command=no_unused_popup.destroy)
                 continue_button.config(width="30", height="15")
                 continue_button.pack(pady=20)
-                no_unnecessary_popup.grab_set()
-                gui.window.wait_window(no_unnecessary_popup)
+                no_unused_popup.grab_set()
+                gui.window.wait_window(no_unused_popup)
                 continue_start_operation()
         else:
             continue_start_operation()
@@ -215,7 +222,7 @@ def continue_start_operation():
         if list_length != 0:
             mismatched_popup = Toplevel(gui.window)
             mismatched_popup_width = 1000
-            mismatched_popup_height = 150
+            mismatched_popup_height = 300
             mismatched_x = (screen_width / 2) - (mismatched_popup_width / 2)
             mismatched_y = (screen_height / 2) - (mismatched_popup_height / 2)
             mismatched_popup.geometry(
@@ -228,15 +235,19 @@ def continue_start_operation():
             mismatched_list_label = Label(mismatched_popup,
                                           text=repr(mismatched_list),
                                           font=("Inter", 10))
+            mismatched_list_label.bind('<Configure>',
+                                       lambda e: mismatched_list_label.config(
+                                           wraplength=mismatched_list_label.winfo_width()))
             mismatched_list_label.pack()
             end_button = Button(mismatched_popup,
                                 text="End Operation",
                                 font=("Inter", 10),
                                 command=mismatched_popup.destroy)
-            end_button.config(width="30", height="15")
-            end_button.pack(pady=20)
+            end_button.config(width="15", height="5")
+            end_button.pack(pady=20, side="bottom")
             mismatched_popup.grab_set()
             gui.window.wait_window(mismatched_popup)
+            gui.mismatched_filename_list.clear()
             return
         else:
             all_matches_popup = Toplevel(gui.window)
@@ -271,6 +282,9 @@ def continue_start_operation():
                           text="Loading...",
                           font=("Inter", 10))
     loading_label.pack(padx=20, pady=20, anchor="center")
+    operation_loading_popup.grab_set()
+    operation_loading_popup.focus_set()
+    operation_loading_popup.update()
     saf.open_csv()
     saf_completion_popup = Toplevel(gui.window)
     saf_completion_popup.geometry(f'{popup_width}x{popup_height}+{int(x)}+{int(y)}')
