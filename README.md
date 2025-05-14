@@ -24,7 +24,7 @@ This tool is a standalone application made for the UMBC librarians. The way this
 
 ### UI Preview
 
-![UI Preview](https://lh3.google.com/u/1/d/1qLwkKIYZcjHZeXQ_LO1EnKzttbsn6p_e=w2560-h1272-iv2)
+![UI Preview](https://drive.usercontent.google.com/download?id=1qLwkKIYZcjHZeXQ_LO1EnKzttbsn6p_e&export=view)
 
 
 ### Current Implemented Features
