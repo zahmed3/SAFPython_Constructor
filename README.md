@@ -11,7 +11,7 @@ This tool is a standalone application made for the UMBC librarians. The way this
 ### Step-by-Step Instructions
 1. Navigate to the GitHub page: [SAFPython Constructor](https://github.com/zahmed3/SAFPython_Constructor)
 
-2. Click on the Releases Tab on the side of the page; I will provide a hyperlink in case you are not able to see it: [Releases](https://github.com/zahmed3/SAFPython_Constructor/releases/tag/v2)
+2. Click on the Releases Tab on the side of the page; I will provide a hyperlink in case you are not able to see it: [Releases](https://github.com/zahmed3/SAFPython_Constructor/releases/tag/v3)
 
 3. Look under Assets and click on SAFPython_Constructor.exe to download the application.
 
@@ -36,7 +36,7 @@ This tool is a standalone application made for the UMBC librarians. The way this
 
 -Close Button
 
--Check for Unnecessary Files
+-Check for Unused Files
 
 -Create Zip Files(s)
 
